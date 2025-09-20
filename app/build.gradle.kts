@@ -42,7 +42,13 @@ android {
 }
 
 dependencies {
-
+    // coil
+    implementation(platform("androidx.compose:compose-bom:2025.08.00"))
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    // font
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.6.0")
+    // gson
+    implementation("com.google.code.gson:gson:2.13.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
