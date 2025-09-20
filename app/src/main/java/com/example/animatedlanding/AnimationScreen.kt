@@ -19,17 +19,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.animatedlanding.data.model.EducationCard
 import com.example.animatedlanding.data.model.EducationCardState
 import com.example.animatedlanding.ui.components.ActionButton
 import com.example.animatedlanding.data.model.EducationData
-import com.example.animatedlanding.ui.components.EducationCardCollapsed
-import com.example.animatedlanding.ui.components.EducationCardExpanded
 import com.example.animatedlanding.ui.components.EducationCardWidget
 import com.example.animatedlanding.ui.components.IntroSection
-import com.example.animatedlanding.ui.components.SaveButtonComponent
 import com.example.animatedlanding.ui.components.ToolBarSection
 import com.example.animatedlanding.ui.utils.safeParseColor
 import kotlinx.coroutines.delay
@@ -49,21 +44,18 @@ fun AnimationScreen(data: EducationData) {
 
     LaunchedEffect(Unit) {
         // step1 intro screen
-        delay(data.collapseExpandIntroInterval.toLong())
         introExpanded.value = true
-        delay(data.expandCardStayInterval.toLong())
+        delay(data.collapseExpandIntroInterval.toLong())
         introExpanded.value = false
         // cards time
-        while(true) {
-            if(currentCardIndex.intValue == data.educationCardList.size) {
-                introExpanded.value = true
-                cardStates.forEach {
-                        card -> card.hasCollapsed = false
+        while (true) {
+            if (currentCardIndex.intValue == data.educationCardList.size) {
+                cardStates.forEach { card ->
+                    card.hasCollapsed = false
                     card.isExpanded = false
                 }
                 break
-            }
-            else {
+            } else {
                 cardStates[currentCardIndex.intValue].isExpanded = true
                 delay(data.expandCardStayInterval.toLong())
                 cardStates[currentCardIndex.intValue].isExpanded = false
@@ -78,41 +70,47 @@ fun AnimationScreen(data: EducationData) {
         modifier = Modifier
             .fillMaxSize()
             .background(
-                brush = Brush.verticalGradient(colors = listOf(safeParseColor(currentCard?.startGradient), safeParseColor(currentCard?.endGradient))
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        safeParseColor(currentCard?.startGradient),
+                        safeParseColor(currentCard?.backGroundColor)
+                    )
                 )
             )
-    )
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .animateContentSize(),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (introExpanded.value) {
-            IntroSection(
-                data.introTitle,
-                data.introSubtitle,
-                "#201929",
-                expanded = true
-            )
-        } else {
-            ToolBarSection(currentCard?.backGroundColor)
-            Spacer(modifier = Modifier.height(10.dp))
-            data.educationCardList.forEachIndexed { index, card ->
-                EducationCardWidget(
-                    card = card,
-                    isExpanded = cardStates[index].isExpanded,
-                    hasCollapsed = cardStates[index].hasCollapsed
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .animateContentSize(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            if (introExpanded.value) {
+                IntroSection(
+                    data.introTitle,
+                    data.introSubtitle,
+                    "#201929",
+                    expanded = true
                 )
+            } else {
+                ToolBarSection(currentCard?.startGradient)
+                data.educationCardList.forEachIndexed { index, card ->
+                    EducationCardWidget(
+                        card = card,
+                        isExpanded = cardStates[index].isExpanded,
+                        hasCollapsed = cardStates[index].hasCollapsed,
+                        isActive = index == currentCardIndex.intValue,
+                        index = index,
+
+                        )
+                }
             }
-            ActionButton(data.ctaLottie)
-            SaveButtonComponent(data.saveButtonCta)
         }
+        if (currentCardIndex.intValue == data.educationCardList.size - 1 && !introExpanded.value)
+            ActionButton(data.saveButtonCta, data.ctaLottie)
     }
+
 }
-
-
 
 
 

@@ -24,8 +24,7 @@ fun ToolBarSection(color: String?) {
         ),
         navigationIcon = {
             IconButton(onClick = { /* Do something */ }) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Search", tint = Color.White)
-
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = Color.White)
             }
         },
         title = {

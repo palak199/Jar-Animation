@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -36,14 +37,14 @@ fun EducationCardExpanded(card: EducationCard) {
                 width = 1.dp,
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        safeParseColor(card.startGradient).copy(alpha = 0.8f),
-                        safeParseColor(card.endGradient).copy(alpha = 0.1f)
+                        safeParseColor(card.strokeStartColor).copy(alpha = 0.1f),
+                        safeParseColor(card.strokeEndColor).copy(alpha = 0.8f)
                     )
                 ),
                 shape = RoundedCornerShape(28.dp)
             ),
         colors = CardDefaults.cardColors(
-            Color.White.copy(alpha = 0.1f) // ✅ Proper way
+            safeParseColor(card.startGradient).copy(alpha = 0.9f) // ✅ Proper way
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 0.dp
@@ -51,7 +52,7 @@ fun EducationCardExpanded(card: EducationCard) {
     ) {
         Column(
             modifier = Modifier
-                .padding(8.dp),
+                .padding(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -67,7 +68,7 @@ fun EducationCardExpanded(card: EducationCard) {
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
                 color = Color.White,
-                modifier = Modifier.width(200.dp).padding(top = 2.dp)
+                modifier = Modifier.width(200.dp).padding(top = 4.dp)
             )
         }
     }

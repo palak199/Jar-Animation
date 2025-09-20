@@ -42,6 +42,9 @@ android {
 }
 
 dependencies {
+    // lottie
+    implementation("com.airbnb.android:lottie-compose:6.0.1")
+
     // coil
     implementation(platform("androidx.compose:compose-bom:2025.08.00"))
     implementation("io.coil-kt:coil-compose:2.6.0")

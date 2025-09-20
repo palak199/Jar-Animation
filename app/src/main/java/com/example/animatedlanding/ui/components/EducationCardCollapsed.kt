@@ -29,7 +29,9 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -48,17 +50,17 @@ fun EducationCardCollapsed(card: EducationCard) {
                     width = 1.dp,
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            safeParseColor(card.startGradient).copy(alpha = 0.8f),
-                            safeParseColor(card.endGradient).copy(alpha = 0.1f)
+                            safeParseColor(card.strokeStartColor).copy(alpha = 0.8f),
+                            safeParseColor(card.strokeEndColor).copy(alpha = 0.1f)
                         )
                     ),
                     shape = RoundedCornerShape(28.dp)
                 ),
             colors = CardDefaults.cardColors(
-                containerColor = Color.White.copy(alpha = 0.08f)
+                containerColor = safeParseColor(card.startGradient).copy(alpha = 0.08f)
             ),
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 0.dp // optional: keep flat for glass look
+                defaultElevation = 0.dp
             )
         ) {
             Row(
