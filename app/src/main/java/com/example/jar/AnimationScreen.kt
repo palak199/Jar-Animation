@@ -45,6 +45,7 @@ fun AnimationScreen(data: EducationData) {
         // cards time
         while (true) {
             if (currentCardIndex.intValue == data.educationCardList.size) {
+                delay(data.collapseExpandIntroInterval.toLong())
                 cardStates.forEach { card ->
                     card.hasCollapsed = false
                     card.isExpanded = false
