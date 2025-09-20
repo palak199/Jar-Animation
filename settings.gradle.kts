@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AnimatedLanding"
+rootProject.name = "Jar"
 include(":app")
  

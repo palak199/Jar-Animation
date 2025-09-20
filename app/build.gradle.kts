@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.animatedlanding"
+    namespace = "com.example.jar"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.animatedlanding"
+        applicationId = "com.example.jar"
         minSdk = 31
         targetSdk = 36
         versionCode = 1
