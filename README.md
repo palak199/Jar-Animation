@@ -7,7 +7,7 @@ It uses **Jetpack Compose**, **MVVM**, **Retrofit**, and **Coroutines** to creat
 API used: [Education Metadata](https://myjar.app/_assets/shared/education-metadata.json)
 
 ## Demo Video
-![Onboarding Animation]((./onboarding.gif))
+![Onboarding Animation](https://github.com/palak199/Jar-Animation/blob/main/onboarding.gif)
 ---
 
 ## Features
