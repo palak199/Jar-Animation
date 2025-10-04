@@ -1,10 +1,9 @@
 # Onboarding Animation
 
 ## Overview
-This project implements the onboarding animation screen as per the Figma design ("Dev_Assignment Onboarding animation.fig").  
+Create beautiful and impressive onboardong screen s by just filling in text images and colors in JSON file at EducationData.json, that's all you have to do it to customise.
 It uses **Jetpack Compose**, **MVVM**, **Retrofit**, and **Coroutines** to create smooth card animations and transitions.
 
-API used: [Education Metadata](https://myjar.app/_assets/shared/education-metadata.json)
 
 ## Demo Video
 ![Onboarding Animation](https://github.com/palak199/Jar-Animation/blob/main/onboarding.gif)
@@ -22,7 +21,6 @@ API used: [Education Metadata](https://myjar.app/_assets/shared/education-metada
 - Kotlin, Jetpack Compose, MVVM
 - Retrofit + Coroutines for network
 - Lottie for animations
-- Dagger / Hilt for dependency injection (if applicable)
 
 ---
 
