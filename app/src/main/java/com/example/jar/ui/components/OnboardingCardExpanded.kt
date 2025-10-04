@@ -1,5 +1,7 @@
 package com.example.jar.ui.components
 
+import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -25,6 +29,12 @@ import com.example.jar.ui.utils.safeParseColor
 
 @Composable
 fun EducationCardExpanded(card: EducationCard) {
+    val context = LocalContext.current
+    val resId = context.resources.getIdentifier(card.image, "drawable", context.packageName)
+    val imageModel: Any = if (resId != 0) resId else card.image
+    Log.d("EducationCard", "Looking for drawable: ${card.image}")
+    Log.d("EducationCard", "Resolved id: $resId")
+
     Card(
         modifier = Modifier
             .padding(vertical = 2.dp)
@@ -52,13 +62,17 @@ fun EducationCardExpanded(card: EducationCard) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            AsyncImage(
-                model = card.image,
-                contentDescription = card.expandStateText,
-                modifier = Modifier
-                    .height(300.dp)
-                    .clip(RoundedCornerShape(14.dp)),
-            )
+            if (resId != 0) {
+                Image(
+                    painter = painterResource(id = resId),
+                    contentDescription = card.expandStateText,
+                    modifier = Modifier
+                        .height(300.dp)
+                        .clip(RoundedCornerShape(14.dp))
+                )
+            } else {
+                Text("⚠️ Missing drawable: ${card.image}", color = Color.Red)
+            }
             Text(
                 text = card.expandStateText,
                 style = MaterialTheme.typography.bodyLarge,

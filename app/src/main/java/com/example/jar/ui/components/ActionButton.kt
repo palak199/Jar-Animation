@@ -1,5 +1,6 @@
 package com.example.jar.ui.components
 
+import androidx.compose.animation.core.tween
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
@@ -20,7 +21,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -36,6 +39,14 @@ fun ActionButton(saveBtnCta: SaveBtn, lottie: String) {
         composition,
         iterations = LottieConstants.IterateForever
     )
+    val scale = remember { androidx.compose.animation.core.Animatable(1f) }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            scale.animateTo(1.05f, animationSpec = tween(800))
+            scale.animateTo(1f, animationSpec = tween(1200))
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -52,6 +63,8 @@ fun ActionButton(saveBtnCta: SaveBtn, lottie: String) {
             modifier = Modifier
                 .height(52.dp)
                 .widthIn(min = 132.dp)
+            .graphicsLayer(scaleX = scale.value, scaleY = scale.value)
+
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,

@@ -11,17 +11,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.jar.ui.utils.safeParseColor
 
 @Composable
 fun IntroSection(title: String, subtitle: String, color: String, expanded: Boolean) {
+    val backgroundBrush = Brush.linearGradient(
+        colors = listOf(
+                        Color(0xFFA5D6A7), // soft green (matches first card)
+                        Color(0xFFB39DDB)  // muted lavender (matches second card)
+                    )
+    )
     if(expanded) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(safeParseColor(color)),
+                .background(backgroundBrush),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

@@ -1,6 +1,7 @@
 package com.example.jar
 
 import AnimationScreen
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
@@ -14,6 +15,7 @@ import com.example.jar.ui.viewmodel.EducationViewModel
 @Composable
 fun LaunchScreen(viewModel: EducationViewModel) {
     val educationData by viewModel.uiState.collectAsState()
+    Log.d("plk", educationData.toString())
     if (educationData != null) {
         AnimationScreen(educationData!!)
     } else {

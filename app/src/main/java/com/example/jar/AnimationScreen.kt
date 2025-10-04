@@ -1,3 +1,4 @@
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,7 +19,6 @@ import androidx.compose.ui.graphics.Brush
 import com.example.jar.data.model.EducationCardState
 import com.example.jar.ui.components.ActionButton
 import com.example.jar.data.model.EducationData
-import com.example.jar.ui.components.EducationCardWidget
 import com.example.jar.ui.components.IntroSection
 import com.example.jar.ui.components.ToolBarSection
 import com.example.jar.ui.utils.safeParseColor
@@ -36,14 +36,13 @@ fun AnimationScreen(data: EducationData) {
     val currentCard by remember {
         derivedStateOf { data.educationCardList.getOrNull(currentCardIndex.intValue) }
     }
-
     LaunchedEffect(Unit) {
         // step1 intro screen
         introExpanded.value = true
         delay(data.collapseExpandIntroInterval.toLong())
         introExpanded.value = false
         // cards time
-        while (true) {
+        while (currentCardIndex.intValue < cardStates.size) {
             if (currentCardIndex.intValue == data.educationCardList.size) {
                 delay(data.collapseExpandIntroInterval.toLong())
                 cardStates.forEach { card ->
@@ -91,19 +90,19 @@ fun AnimationScreen(data: EducationData) {
             } else {
                 ToolBarSection(currentCard?.startGradient)
                 data.educationCardList.forEachIndexed { index, card ->
-                    EducationCardWidget(
+                    OnboardingCardWidget(
                         card = card,
                         isExpanded = cardStates[index].isExpanded,
                         hasCollapsed = cardStates[index].hasCollapsed,
                         isActive = index == currentCardIndex.intValue,
                         index = index,
-
                         )
                 }
             }
         }
-        if (currentCardIndex.intValue == data.educationCardList.size - 1 && !introExpanded.value)
+        if (currentCardIndex.intValue == data.educationCardList.size - 1 && !introExpanded.value) {
             ActionButton(data.saveButtonCta, data.ctaLottie)
+        }
     }
 
 }

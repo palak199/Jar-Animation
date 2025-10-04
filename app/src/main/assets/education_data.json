@@ -2,47 +2,49 @@
   "success": true,
   "data": {
     "manualBuyEducationData": {
-      "toolBarText": "INSTANT SAVING",
+      "toolBarText": "WELLNESS, DELIVERED",
       "introTitle": "Welcome to",
-      "introSubtitle": "INSTANT SAVING",
+      "introSubtitle": "HEALTHY MODE",
+      "introImage": "zomato_healthy_intro_graphic",
+      "screenBackgroundColor": "#F5F5F5",
       "educationCardList": [
         {
-          "image": "https://img.myjar.app/RJf1PnhlAQ_5oZcgHo-g3I__7nIsAqFWoCj3-4dq_Hs/rs:fit:0:0/q:60/format:webp/plain/https://cdn.myjar.app/Homefeed/engagement_card/buyGoldEducation1.webp",
-          "collapsedStateText": "Enjoy 100% control on savings",
-          "expandStateText": "Enjoy 100% control over your savings",
-          "backGroundColor": "#992D7E",
+          "image": "ic_discover_healthy",
+          "collapsedStateText": "Find Healthier Alternatives",
+          "expandStateText": "Discover great flavor, guaranteed low on calories.",
+          "backGroundColor": "#A5D6A7", // Soft Muted Green
           "strokeStartColor": "#33FFFFFF",
           "strokeEndColor": "#CCFFFFFF",
-          "startGradient": "#713A65",
-          "endGradient": "#713A65"
+          "startGradient": "#81C784",
+          "endGradient": "#81C784"
         },
         {
-          "image": "https://img.myjar.app/yXXRNLKGxWkoWRyyzurnZr3UJNHbqVaCHiLk1VYGlDM/rs:fit:0:0/q:60/format:webp/plain/https://cdn.myjar.app/Homefeed/engagement_card/buyGoldEducation2.webp",
-          "collapsedStateText": "Buy gold anytime,anywhere",
-          "expandStateText": "Buy gold anytime,anywhere",
-          "backGroundColor": "#197A41",
+          "image": "ic_tailored_diet",
+          "collapsedStateText": "Filters for Every Diet",
+          "expandStateText": "Filter by Keto, Vegan, or High-Protein instantly.",
+          "backGroundColor": "#B39DDB", // Muted Lavender/Blue
           "strokeStartColor": "#33FFFFFF",
           "strokeEndColor": "#CCFFFFFF",
-          "startGradient": "#286642",
-          "endGradient": "#286642"
+          "startGradient": "#9575CD",
+          "endGradient": "#9575CD"
         },
         {
-          "image": "https://img.myjar.app/fLqaeBj3sX4VtpjdRrj2_HxHPJ4YmqaFX9jPcm563cc/rs:fit:0:0/q:60/format:webp/plain/https://cdn.myjar.app/Homefeed/engagement_card/buyGoldEducation3.webp",
-          "collapsedStateText": "Get extra gold",
-          "expandStateText": "Get extra gold using coupons",
-          "backGroundColor": "#C39D26",
+          "image": "ic_nutrition_breakdown",
+          "collapsedStateText": "Instant Nutrition Breakdown",
+          "expandStateText": "See verified calories and macros before you order.",
+          "backGroundColor": "#FFAB91", // Soft Coral/Peach
           "strokeStartColor": "#33FFFFFF",
           "strokeEndColor": "#CCFFFFFF",
-          "startGradient": "#736C37",
-          "endGradient": "#736C37"
+          "startGradient": "#FF8A65",
+          "endGradient": "#FF8A65"
         }
       ],
       "saveButtonCta": {
-        "text": "Save in Gold",
-        "deeplink": null,
-        "backgroundColor": "#272239",
-        "textColor": "#FDF3D6",
-        "strokeColor": "#272239",
+        "text": "Explore Healthy",
+        "deeplink": "zomato://healthy_mode/home",
+        "backgroundColor": "#D7263D",
+        "textColor": "#FFFFFF",
+        "strokeColor": "#FF6F61",
         "icon": null,
         "order": null
       },
@@ -55,10 +57,10 @@
       "bottomToCenterTranslationInterval": 1500,
       "expandCardStayInterval": 3000,
       "seenCount": null,
-      "actionText": "know more",
+      "actionText": "Read Our Healthy Commitment",
       "shouldShowOnLandingPage": false,
-      "toolBarIcon": "https://img.myjar.app/yboPYuxcnt49zki8Iw_vKoPDH-boET8q9ZY5FIA14X4/rs:fit:0:0/q:60/format:webp/plain/https://cdn.myjar.app/BuyGoldFlow/instantSaveLightningFlashIcon.webp",
-      "introSubtitleIcon": "https://img.myjar.app/yboPYuxcnt49zki8Iw_vKoPDH-boET8q9ZY5FIA14X4/rs:fit:0:0/q:60/format:webp/plain/https://cdn.myjar.app/BuyGoldFlow/instantSaveLightningFlashIcon.webp",
+      "toolBarIcon": "",
+      "introSubtitleIcon": "",
       "shouldShowBeforeNavigating": true
     }
   }

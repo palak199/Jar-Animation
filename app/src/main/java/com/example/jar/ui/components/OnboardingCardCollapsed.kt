@@ -1,5 +1,6 @@
 package com.example.jar.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -30,6 +34,11 @@ import com.example.jar.ui.utils.safeParseColor
 
 @Composable
 fun EducationCardCollapsed(card: EducationCard) {
+    val context = LocalContext.current
+
+    val resId = context.resources.getIdentifier(card.image, "drawable", context.packageName)
+
+    val imageModel: Any = if (resId != 0) resId else card.image
     Card(
             modifier = Modifier
                 .height(80.dp)
@@ -58,12 +67,19 @@ fun EducationCardCollapsed(card: EducationCard) {
                 modifier = Modifier
                     .padding(vertical = 10.dp, horizontal = 8.dp)
             ) {
-                AsyncImage(
-                    model = card.image,
-                    contentDescription = card.collapsedStateText,
-                    modifier = Modifier
-                        .clip(CircleShape)
-                )
+                if (resId != 0) {
+                    Image(
+                        painter = painterResource(id = resId),
+                        contentDescription = card.expandStateText,
+                        modifier = Modifier
+                            .height(72.dp)
+                            .width(56.dp)
+                            .clip(RoundedCornerShape(30.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+                } else {
+                    Text("⚠️ Missing drawable: ${card.image}", color = Color.Red)
+                }
                 Spacer(Modifier.width(10.dp))
                 Text(
                     text = card.collapsedStateText,
